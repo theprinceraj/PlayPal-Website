@@ -1,0 +1,19 @@
+{
+  "name": "playpal-website",
+  "version": "1.0.0",
+  "description": "A website designed to make database of raiders searchable.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theprinceraj/PlayPal-Website.git"
+  },
+  "author": "theprinceraj",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/theprinceraj/PlayPal-Website/issues"
+  },
+  "homepage": "https://github.com/theprinceraj/PlayPal-Website#readme"
+}

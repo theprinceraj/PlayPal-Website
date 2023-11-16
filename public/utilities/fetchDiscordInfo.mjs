@@ -4,7 +4,7 @@
  * @param {string} token - The authorization token (Bot token) for accessing the API.
  * @returns {Promise<[string, string]>} - A Promise that resolves to an array containing the avatar URL and username.
  */
-export function fetchDiscordInfo(userId, token) {
+export async function fetchDiscordInfo(userId, token) {
   fetch(`https://discord.com/api/v10/users/${userId}`, {
     headers: {
       Authorization: `Bot ${token}` // For bot token

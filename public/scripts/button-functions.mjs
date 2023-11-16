@@ -7,7 +7,7 @@ const searchInput = document.querySelector('.search__field');
 
 searchButton.addEventListener('click', () => {
     const userId = searchInput.value;
-    alert(inputValue);
+    alert(userId);
     
     displayProfileCard(userId);
 });
@@ -15,18 +15,18 @@ searchButton.addEventListener('click', () => {
 const form = document.querySelector('#searchForm');
 form.addEventListener('submit', (event) => {
     event.preventDefault();
-    alert(inputValue);
-    
     const userId = searchInput.value;
+    alert(userId);
+
     displayProfileCard(userId)
 });
 
-const displayProfileCard = (userId) => {
-    const [avatarURL, discordUsername] = fetchDiscordInfo(userId, config.discordBotToken);
-    const raiderData = fetchRaiderStats(userId);
+const displayProfileCard = async (userId) => {
 
-    const cardWithModalMarkup = `<div class="card" style="width: 18rem;">
-<img class="card-img-top"
+    const [avatarURL, discordUsername] = await fetchDiscordInfo(userId, process.env.discordBotToken || config.discordBotToken);
+    const raiderData = await fetchRaiderStats(userId);
+
+    const cardWithModalMarkup = `<img class="card-img-top"
     src="${avatarURL}"
     alt="Discord Profile Image">
 <div class="card-body">
@@ -42,7 +42,6 @@ const displayProfileCard = (userId) => {
     <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
         data-bs-target="#moreDetailsModal">More</button>
     <button onClick="window.location.href = 'https://discord.com/users/${userId}';" type="button" class="btn btn-outline-secondary">Message</button>
-</div>
 </div>
 
 <div class="modal fade" id="moreDetailsModal" tabindex="-1" aria-labelledby="moreDetailsModalLabel"
@@ -71,6 +70,8 @@ aria-hidden="true">
 </div>`;
 
     const cardWithModal = document.createElement('div');
+    cardWithModal.className = 'card';
+    cardWithModal.style.width = '18rem';
     cardWithModal.innerHTML = cardWithModalMarkup;
     document.body.appendChild(cardWithModal);
 }

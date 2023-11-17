@@ -15,62 +15,17 @@
 </head>
 
 <body>
-
     <div>
-        <form class="search" id="searchForm">
+        <form class="search" id="searchForm" action="/search" method="get">
             <div class="search__wrapper">
-                <input type="number" name="" placeholder="Search for..." class="search__field" required>
-                <button type="button" class="fa fa-search search__icon"></button>
+                <input type="number" name="userId" placeholder="Search for..." class="search__field" required>
+                <button type="submit" class="fa fa-search search__icon"></button>
             </div>
         </form>
     </div>
 
-    <!-- <div class="card" style="width: 18rem;">
-        <img class="card-img-top"
-            src="https://cdn.discordapp.com/avatars/564327207133249536/2a80d088463a3751c63ebb0b0b64f0e9.png?size=1024"
-            alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title">bhaalu</h5>
-            <p class="card-text">🛡️ Raider Stats</p>
-        </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">🪄 <b>Elixir Gained</b>: 740</li>
-            <li class="list-group-item">⚔️ <b>Raids</b>: Total - 10, Won - 3, Lost - 7</li>
-            <li class="list-group-item">📊 <b>Experience</b>: Total - 57092, Highest - 12000, Lowest - 5664</li>
-        </ul>
-        <div class="card-body">
-            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
-                data-bs-target="#moreDetailsModal">More</button>
-            <button type="button" class="btn btn-outline-secondary">Message</button>
-        </div>
-    </div>
-
-    <div class="modal fade" id="moreDetailsModal" tabindex="-1" aria-labelledby="moreDetailsModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">More Details</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p><b>🧾 Last 5 Raids Xp:</b></p>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">10223</li>
-                        <li class="list-group-item">10445</li>
-                        <li class="list-group-item">11200</li>
-                        <li class="list-group-item">None</li>
-                        <li class="list-group-item">5669</li>
-                    </ul>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div> -->
-
     <script src="./scripts/button-functions.mjs" type="module"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>

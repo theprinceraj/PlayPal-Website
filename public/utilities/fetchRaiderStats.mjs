@@ -20,7 +20,7 @@ const app = initializeApp(firebaseConfig);
  * @param {string} userId - The ID of the user.
  * @return {object} The raider stats data.
  */
-export async function fetchRaiderStats(userId) {
+export default async function fetchRaiderStats(userId) {
     // Initialize Realtime Database and get a reference to the service
     const database = getDatabase(app);
     const searchResult = ref(database, 'raiders/' + userId);

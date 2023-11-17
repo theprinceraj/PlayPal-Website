@@ -1,5 +1,5 @@
 import express, { static as expressStatic } from 'express';
-
+import { displayProfileCard } from './public/utilities/displayProfileCard.mjs';
 
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
@@ -16,17 +16,11 @@ app.use(expressStatic(join(__dirname, 'public')));
 app.get('/', (req, res) => {
     res.sendFile(join(__dirname, 'public', 'index.html'));
 });
-
-// Middleware to restrict access to the utilities folder
-app.use('/utilities/fetchRaiderStats.mjs', (req, res) => {
-    // Prevent direct access to the utilities folder
-    res.status(403).send('Access Forbidden');
+app.get('/search', (req, res) => {
+    const userId = req.query.userId;
+    let markup = displayProfileCard(userId);
+    res.send(markup);
 });
-app.use('/utilities/fetchDiscordInfo.mjs', (req, res) => {
-    // Prevent direct access to the utilities folder
-    res.status(403).send('Access Forbidden');
-});
-
 // Start the server
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);

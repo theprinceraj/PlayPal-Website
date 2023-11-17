@@ -1,9 +1,10 @@
+import 'dotenv/config';
 import { fetchRaiderStats } from "../utilities/fetchRaiderStats.mjs";
 import { fetchDiscordInfo } from '../utilities/fetchDiscordInfo.mjs';
 
 export async function displayProfileCard(userId) {
 
-    const [avatarURL, discordUsername] = await fetchDiscordInfo(userId, process.env.discordBotToken || config.discordBotToken);
+    const [avatarURL, discordUsername] = await fetchDiscordInfo(userId, process.env.discordBotToken);
     const raiderData = await fetchRaiderStats(userId);
 
     const cardWithModalMarkup = `<img class="card-img-top"

@@ -14,14 +14,14 @@ app.use(expressStatic(join(__dirname, '../public')));
 
 // Define routes for specific files
 app.get('/', (req, res) => {
-    res.sendFile(join(__dirname, '../public', 'index.html'));
+    res.end(join(__dirname, '../public', 'index.html'));
 });
 
 app.get('/search', async (req, res) => {
     try {
         const userId = req.query.userId;
         let markup = await displayProfileCard(userId.toString());
-        res.send(markup);
+        res.end(markup);
     } catch (error) {
         console.log(error);
         res.status(500).send('Error generating profile card');
@@ -32,3 +32,5 @@ app.get('/search', async (req, res) => {
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
+
+export default app;

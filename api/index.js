@@ -25,8 +25,7 @@ app.use('/api/search', async (req, res) => {
         res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
         res.send(markup);
     } catch (error) {
-        console.log(error);
-        res.status(500).send('Error generating profile card');
+        res.status(500).send('No data found for the given ID.');
     }
 });
 

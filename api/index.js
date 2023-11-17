@@ -13,11 +13,11 @@ const port = process.env.PORT || 3000; // Use the provided port or default to 30
 app.use(expressStatic(join(__dirname, '../public')));
 
 // Define routes for specific files
-app.get('/', (req, res) => {
+app.get('/api', (req, res) => {
     res.sendFile(join(__dirname, '../public', 'index.html'));
 });
 
-app.use('/search', async (req, res) => {
+app.use('/api/search', async (req, res) => {
     try {
         const userId = req.query.userId;
         let markup = await displayProfileCard(userId.toString());

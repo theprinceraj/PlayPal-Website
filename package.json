@@ -13,6 +13,7 @@
   "bugs": {
     "url": "https://github.com/theprinceraj/PlayPal-Website/issues"
   },
+  "type":"module",
   "homepage": "https://github.com/theprinceraj/PlayPal-Website#readme",
   "dependencies": {
     "express": "^4.18.2",

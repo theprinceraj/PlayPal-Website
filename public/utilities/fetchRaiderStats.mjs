@@ -2,14 +2,14 @@ import { initializeApp } from "firebase/app";
 import { getDatabase, ref, onValue } from "firebase/database";
 
 const firebaseConfig = {
-    apiKey: process.env.apiKey || config.apiKey,
-    authDomain: process.env.authDomain || config.authDomain,
-    databaseURL: process.env.databaseURL || config.databaseURL,
-    projectId: process.env.projectId || config.projectId,
-    storageBucket: process.env.storageBucket || config.storageBucket,
-    messagingSenderId: process.env.messagingSenderId || config.messagingSenderId,
-    appId: process.env.appId || config.appId,
-    measurementId: process.env.measurementId || config.measurementId,
+    apiKey: process.env.apiKey,
+    authDomain: process.env.authDomain,
+    databaseURL: process.env.databaseURL,
+    projectId: process.env.projectId,
+    storageBucket: process.env.storageBucket,
+    messagingSenderId: process.env.messagingSenderId,
+    appId: process.env.appId,
+    measurementId: process.env.measurementId,
 };
 const app = initializeApp(firebaseConfig);
 

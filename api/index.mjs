@@ -21,6 +21,8 @@ app.use('/search', async (req, res) => {
     try {
         const userId = req.query.userId;
         let markup = await displayProfileCard(userId.toString());
+        res.setHeader('Content-Type', 'text/html');
+        res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
         res.end(markup);
     } catch (error) {
         console.log(error);

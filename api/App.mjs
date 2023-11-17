@@ -1,5 +1,5 @@
 import express, { static as expressStatic } from 'express';
-import { displayProfileCard } from './public/utilities/displayProfileCard.mjs';
+import { displayProfileCard } from '../public/utilities/displayProfileCard.mjs';
 
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
@@ -10,11 +10,11 @@ const app = express();
 const port = process.env.PORT || 3000; // Use the provided port or default to 3000
 
 // Serve static files from the 'public' directory
-app.use(expressStatic(join(__dirname, 'public')));
+app.use(expressStatic(join(__dirname, '../public')));
 
 // Define routes for specific files
 app.get('/', (req, res) => {
-    res.sendFile(join(__dirname, 'public', 'index.html'));
+    res.sendFile(join(__dirname, '../public', 'index.html'));
 });
 
 app.get('/search', async (req, res) => {
@@ -27,6 +27,7 @@ app.get('/search', async (req, res) => {
         res.status(500).send('Error generating profile card');
     }
 });
+
 // Start the server
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);

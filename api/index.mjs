@@ -14,7 +14,7 @@ app.use(expressStatic(join(__dirname, '../public')));
 
 // Define routes for specific files
 app.get('/', (req, res) => {
-    res.end(join(__dirname, '../public', 'index.html'));
+    res.sendFile(join(__dirname, '../public', 'index.html'));
 });
 
 app.use('/search', async (req, res) => {
@@ -23,7 +23,7 @@ app.use('/search', async (req, res) => {
         let markup = await displayProfileCard(userId.toString());
         res.setHeader('Content-Type', 'text/html');
         res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
-        res.end(markup);
+        res.send(markup);
     } catch (error) {
         console.log(error);
         res.status(500).send('Error generating profile card');

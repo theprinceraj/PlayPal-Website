@@ -1,4 +1,3 @@
-import config from '../../config.json' assert {type: 'json'};
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, onValue } from "firebase/database";
 

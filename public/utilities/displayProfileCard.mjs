@@ -1,6 +1,5 @@
 import { fetchRaiderStats } from "../utilities/fetchRaiderStats.mjs";
 import { fetchDiscordInfo } from '../utilities/fetchDiscordInfo.mjs';
-import config from '../../config.json' assert {type: 'json'};
 
 export async function displayProfileCard(userId) {
 

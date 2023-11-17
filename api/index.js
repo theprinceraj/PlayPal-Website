@@ -14,7 +14,7 @@ app.use(expressStatic(join(__dirname, '../public')));
 
 // Define routes for specific files
 app.get(['/', '/api'], (req, res) => {
-    res.sendFile(join(__dirname, '../public/view', 'index.html'));
+    res.sendFile(join(__dirname, '../public/', 'index.html'));
 });
 
 app.use('/api/search', async (req, res) => {

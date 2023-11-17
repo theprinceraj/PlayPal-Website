@@ -150,3 +150,9 @@ body {
     opacity: 1;
     visibility: visible !important;
 }
+
+@media (max-width: 426px) {
+    .search__field:focus {
+        width: 90vw;
+    }
+}

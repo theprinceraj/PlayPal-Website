@@ -16,10 +16,15 @@ app.use(expressStatic(join(__dirname, 'public')));
 app.get('/', (req, res) => {
     res.sendFile(join(__dirname, 'public', 'index.html'));
 });
-app.get('/search', (req, res) => {
-    const userId = req.query.userId;
-    let markup = displayProfileCard(userId);
-    res.send(markup);
+app.get('/search', async (req, res) => {
+    try {
+        const userId = req.query.userId;
+        let markup = await displayProfileCard(userId.toString());
+        res.send(markup);
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Error generating profile card');
+    }
 });
 // Start the server
 app.listen(port, () => {

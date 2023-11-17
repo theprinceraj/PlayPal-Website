@@ -20,13 +20,15 @@ const app = initializeApp(firebaseConfig);
  * @param {string} userId - The ID of the user.
  * @return {object} The raider stats data.
  */
-export default async function fetchRaiderStats(userId) {
-    // Initialize Realtime Database and get a reference to the service
-    const database = getDatabase(app);
-    const searchResult = ref(database, 'raiders/' + userId);
-    onValue(searchResult, snap => {
-        const data = snap.val();
-        console.log(data);
-        return data;
-    })
+export async function fetchRaiderStats(userId) {
+    return new Promise((resolve, reject) => {
+        const database = getDatabase(app);
+        const searchResult = ref(database, 'raiders/' + userId);
+        onValue(searchResult, (snap) => {
+            const data = snap.val();
+            resolve(data); // Resolve the promise with the fetched data
+        }, (error) => {
+            reject(error); // Reject the promise in case of an error
+        });
+    });
 }

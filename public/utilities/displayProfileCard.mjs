@@ -2,7 +2,7 @@ import { fetchRaiderStats } from "../utilities/fetchRaiderStats.mjs";
 import { fetchDiscordInfo } from '../utilities/fetchDiscordInfo.mjs';
 import config from '../../config.json' assert {type: 'json'};
 
-export default async function displayProfileCard(userId) {
+export async function displayProfileCard(userId) {
 
     const [avatarURL, discordUsername] = await fetchDiscordInfo(userId, process.env.discordBotToken || config.discordBotToken);
     const raiderData = await fetchRaiderStats(userId);
@@ -50,5 +50,28 @@ aria-hidden="true">
 </div>
 </div>`;
 
-    return cardWithModalMarkup;
+    const completeMarkup = `<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>PlayPal | Raider Stats</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png">
+        <link rel="manifest" href="./assets/site.webmanifest">
+        <link rel="stylesheet" href="../styles/bootstrap.css">
+        <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+    </head>
+    <body>
+    <div class="card" style="width: 18rem;">
+    ${cardWithModalMarkup}
+    </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"></script>
+    </body>    
+    </html>`
+    return completeMarkup;
 }

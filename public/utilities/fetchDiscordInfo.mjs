@@ -1,14 +1,13 @@
 /**
  * Fetches user information from Discord API.
  * @param {string} userId - The ID of the user to fetch information for.
- * @param {string} token - The authorization token (Bot token) for accessing the API.
  * @returns {Promise<[string, string]>} - A Promise that resolves to an array containing the avatar URL and username.
  */
-export async function fetchDiscordInfo(userId, token) {
+export async function fetchDiscordInfo(userId) {
   try {
     const response = await fetch(`https://discord.com/api/v10/users/${userId}`, {
       headers: {
-        Authorization: `Bot ${token}` // For bot token
+        Authorization: `Bot ${process.env.discordBotToken}` // For bot token
       }
     });
     if (!response.ok) {

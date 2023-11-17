@@ -13,8 +13,8 @@ const port = process.env.PORT || 3000; // Use the provided port or default to 30
 app.use(expressStatic(join(__dirname, '../public')));
 
 // Define routes for specific files
-app.get('/api', (req, res) => {
-    res.sendFile(join(__dirname, '../public', 'index.html'));
+app.get(['/', '/api'], (req, res) => {
+    res.sendFile(join(__dirname, '../public/view', 'index.html'));
 });
 
 app.use('/api/search', async (req, res) => {

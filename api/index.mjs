@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
     res.end(join(__dirname, '../public', 'index.html'));
 });
 
-app.get('/search', async (req, res) => {
+app.use('/search', async (req, res) => {
     try {
         const userId = req.query.userId;
         let markup = await displayProfileCard(userId.toString());

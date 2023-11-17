@@ -16,6 +16,7 @@ app.use(expressStatic(join(__dirname, 'public')));
 app.get('/', (req, res) => {
     res.sendFile(join(__dirname, 'public', 'index.html'));
 });
+
 app.get('/search', async (req, res) => {
     try {
         const userId = req.query.userId;

@@ -24,7 +24,8 @@ app.use((error, req, res, next) => {
     const errorPageMarkup = fs.readFileSync('./public/views/error.html');
     res.setHeader('Content-Type', 'text/html');
     res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
-    res.send(errorPageMarkup);
+
+    res.send(errorPageMarkup.replace('${errorMessage}', error));
 })
 
 app.use('/api/search', async (req, res) => {

@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+.error-section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: red;
+}
+
+.error-section-heading h1 {
+    font-size: 10vw;
+}
+
+.error-section-description p:nth-child(2) {
+    color: gray;
+    font-style: italic;
+}
+
+.error-section-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

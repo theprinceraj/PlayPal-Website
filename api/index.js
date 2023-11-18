@@ -3,6 +3,7 @@ import { displayProfileCard } from '../public/utilities/displayProfileCard.mjs';
 
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import { error } from 'console';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
@@ -16,6 +17,11 @@ app.use(expressStatic(join(__dirname, '../public')));
 app.get(['/', '/api'], (req, res) => {
     res.sendFile(join(__dirname, '../public/', 'index.html'));
 });
+
+app.use((error, req, res, next) => {
+    console.error(error);
+    res.status(500).sendFile(join(__dirname, '../public/views/', 'error.html'));
+})
 
 app.use('/api/search', async (req, res) => {
     try {

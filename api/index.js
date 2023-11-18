@@ -1,4 +1,5 @@
 import express, { static as expressStatic } from 'express';
+import fs from 'fs';
 import { displayProfileCard } from '../public/utilities/displayProfileCard.mjs';
 
 import { join, dirname } from 'path';
@@ -20,7 +21,10 @@ app.get(['/', '/api'], (req, res) => {
 
 app.use((error, req, res, next) => {
     console.error(error);
-    res.status(500).sendFile(join(__dirname, '../public/views/', 'error.html'));
+    const errorPageMarkup = fs.readFileSync('./public/views/error.html');
+    res.setHeader('Content-Type', 'text/html');
+    res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
+    res.send(errorPageMarkup);
 })
 
 app.use('/api/search', async (req, res) => {

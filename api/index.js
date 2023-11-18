@@ -29,11 +29,13 @@ app.use((error, req, res, next) => {
     res.send(errorPageMarkup.replace('${errorMessage}', error));
 })
 
-app.use('/api/search', async (req, res) => {
+app.use('/api/search', async (req, res, next) => {
     try {
         const userId = req.query.userId.toString();
-        if(!isValidDiscordID(userId))
+        if (!isValidDiscordID(userId)) {
             res.status(500).send('Invalid Discord ID.');
+            return;
+        }
 
         let markup = await displayProfileCard(userId);
         res.setHeader('Content-Type', 'text/html');
@@ -41,6 +43,7 @@ app.use('/api/search', async (req, res) => {
         res.send(markup);
     } catch (error) {
         console.error(error)
+        next(error);
         res.status(500).send('No data found for the given ID.');
     }
 });

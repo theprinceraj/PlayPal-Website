@@ -17,24 +17,28 @@ import { fetchDiscordInfo } from '../utilities/fetchDiscordInfo.mjs';
  */
 export async function displayProfileCard(userId) {
 
-    const [avatarURL, discordUsername] = await fetchDiscordInfo(userId, process.env.discordBotToken);
-    const raiderData = await fetchRaiderStats(userId);
-    const markupTemplate = fs.readFileSync('./public/views/searchResult.html', 'utf-8');
-    const finalMarkup = markupTemplate.replace('${discordUsername}', discordUsername)
-        .replace('${avatarURL}', avatarURL)
-        .replace('${raiderData.elixirGained}', raiderData.elixirGained)
-        .replace('${raiderData.raids.total}', raiderData.raids.total)
-        .replace('${raiderData.raids.won}', raiderData.raids.won)
-        .replace('${raiderData.raids.lost}', raiderData.raids.lost)
-        .replace('${raiderData.xp.total}', raiderData.xp.total)
-        .replace('${raiderData.xp.highest}', raiderData.xp.highest)
-        .replace('${raiderData.xp.lowest}', raiderData.xp.lowest)
-        .replace('${raiderData.xp.last5Raids[0]}', raiderData.xp.last5Raids[0])
-        .replace('${raiderData.xp.last5Raids[1]}', raiderData.xp.last5Raids[1])
-        .replace('${raiderData.xp.last5Raids[2]}', raiderData.xp.last5Raids[2])
-        .replace('${raiderData.xp.last5Raids[3]}', raiderData.xp.last5Raids[3])
-        .replace('${raiderData.xp.last5Raids[4]}', raiderData.xp.last5Raids[4])
-        .replace('${userId}', userId);;
-    
-    return finalMarkup;
+    try {
+        const [avatarURL, discordUsername] = await fetchDiscordInfo(userId, process.env.discordBotToken);
+        const raiderData = await fetchRaiderStats(userId);
+        const markupTemplate = fs.readFileSync('./public/views/searchResult.html', 'utf-8');
+        const finalMarkup = markupTemplate.replace('${discordUsername}', discordUsername)
+            .replace('${avatarURL}', avatarURL)
+            .replace('${raiderData.elixirGained}', raiderData.elixirGained)
+            .replace('${raiderData.raids.total}', raiderData.raids.total)
+            .replace('${raiderData.raids.won}', raiderData.raids.won)
+            .replace('${raiderData.raids.lost}', raiderData.raids.lost)
+            .replace('${raiderData.xp.total}', raiderData.xp.total)
+            .replace('${raiderData.xp.highest}', raiderData.xp.highest)
+            .replace('${raiderData.xp.lowest}', raiderData.xp.lowest)
+            .replace('${raiderData.xp.last5Raids[0]}', raiderData.xp.last5Raids[0])
+            .replace('${raiderData.xp.last5Raids[1]}', raiderData.xp.last5Raids[1])
+            .replace('${raiderData.xp.last5Raids[2]}', raiderData.xp.last5Raids[2])
+            .replace('${raiderData.xp.last5Raids[3]}', raiderData.xp.last5Raids[3])
+            .replace('${raiderData.xp.last5Raids[4]}', raiderData.xp.last5Raids[4])
+            .replace('${userId}', userId);;
+
+        return finalMarkup;
+    } catch (error) {
+        console.error(error);
+    }
 }

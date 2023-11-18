@@ -30,6 +30,5 @@ export async function fetchDiscordInfo(userId) {
     return [avatarURL, username];
   } catch (error) {
     console.error('Error fetching user data:', error);
-    throw error;
   }
 }

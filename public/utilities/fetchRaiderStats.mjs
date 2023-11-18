@@ -15,10 +15,15 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 /**
- * Fetches the raider stats for a given user ID.
+ * Fetches raider stats for a given user ID.
+ * 
+ * This function retrieves the raider stats from the database for the specified user ID. It uses the 
+ * 'getDatabase' function to obtain a reference to the database and then queries the 'raiders' collection 
+ * with the provided user ID. The function returns a promise that resolves with the fetched data or rejects 
+ * with an error in case of any issues.
  *
  * @param {string} userId - The ID of the user.
- * @return {object} The raider stats data.
+ * @return {Promise} A promise that resolves with the fetched data or rejects with an error.
  */
 export async function fetchRaiderStats(userId) {
     return new Promise((resolve, reject) => {

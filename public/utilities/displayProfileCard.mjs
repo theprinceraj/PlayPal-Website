@@ -19,7 +19,7 @@ export async function displayProfileCard(userId) {
 
     const [avatarURL, discordUsername] = await fetchDiscordInfo(userId, process.env.discordBotToken);
     const raiderData = await fetchRaiderStats(userId);
-    const markupTemplate = fs.readFileSync('./public/view/searchResult.html', 'utf-8');
+    const markupTemplate = fs.readFileSync('./public/views/searchResult.html', 'utf-8');
     const finalMarkup = markupTemplate.replace('${discordUsername}', discordUsername)
         .replace('${avatarURL}', avatarURL)
         .replace('${raiderData.elixirGained}', raiderData.elixirGained)

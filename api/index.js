@@ -1,12 +1,13 @@
-import express, { static as expressStatic } from 'express';
 import fs from 'fs';
-import { displayProfileCard } from '../public/utilities/displayProfileCard.mjs';
-
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { error } from 'console';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+import express, { static as expressStatic } from 'express';
+
+import { displayProfileCard } from '../public/utilities/displayProfileCard.mjs';
+import { isValidDiscordID } from "../public/utilities/validateDiscordID.mjs";
+
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -30,12 +31,16 @@ app.use((error, req, res, next) => {
 
 app.use('/api/search', async (req, res) => {
     try {
-        const userId = req.query.userId;
-        let markup = await displayProfileCard(userId.toString());
+        const userId = req.query.userId.toString();
+        if(!isValidDiscordID(userId))
+            res.status(500).send('Invalid Discord ID.');
+
+        let markup = await displayProfileCard(userId);
         res.setHeader('Content-Type', 'text/html');
         res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
         res.send(markup);
     } catch (error) {
+        console.error(error)
         res.status(500).send('No data found for the given ID.');
     }
 });

@@ -23,10 +23,7 @@ export async function displayProfileCard(userId) {
         const markupTemplate = fs.readFileSync('./public/views/searchResult.html', 'utf-8');
         const finalMarkup = markupTemplate.replace('${discordUsername}', discordUsername)
             .replace('${avatarURL}', avatarURL)
-            .replace('${raiderData.elixirGained}', raiderData.elixirGained)
             .replace('${raiderData.raids.total}', raiderData.raids.total)
-            .replace('${raiderData.raids.won}', raiderData.raids.won)
-            .replace('${raiderData.raids.lost}', raiderData.raids.lost)
             .replace('${raiderData.xp.total}', raiderData.xp.total)
             .replace('${raiderData.xp.highest}', raiderData.xp.highest)
             .replace('${raiderData.xp.lowest}', raiderData.xp.lowest)

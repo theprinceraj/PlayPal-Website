@@ -24,14 +24,14 @@ export async function displayProfileCard(userId) {
         const finalMarkup = markupTemplate.replace('${discordUsername}', discordUsername)
             .replace('${avatarURL}', avatarURL)
             .replace('${raiderData.raids.total}', raiderData.raids.total)
-            .replace('${raiderData.xp.total}', raiderData.xp.total)
-            .replace('${raiderData.xp.highest}', raiderData.xp.highest)
-            .replace('${raiderData.xp.lowest}', raiderData.xp.lowest)
-            .replace('${raiderData.xp.last5Raids[0]}', raiderData.xp.last5Raids[0])
-            .replace('${raiderData.xp.last5Raids[1]}', raiderData.xp.last5Raids[1])
-            .replace('${raiderData.xp.last5Raids[2]}', raiderData.xp.last5Raids[2])
-            .replace('${raiderData.xp.last5Raids[3]}', raiderData.xp.last5Raids[3])
-            .replace('${raiderData.xp.last5Raids[4]}', raiderData.xp.last5Raids[4])
+            .replace('${raiderData.score.total}', raiderData.score.total)
+            .replace('${raiderData.score.highest}', raiderData.score.highest)
+            .replace('${raiderData.score.lowest}', raiderData.score.lowest)
+            .replace('${raiderData.score.last5Raids[0]}', raiderData.score.last5Raids[0])
+            .replace('${raiderData.score.last5Raids[1]}', raiderData.score.last5Raids[1])
+            .replace('${raiderData.score.last5Raids[2]}', raiderData.score.last5Raids[2])
+            .replace('${raiderData.score.last5Raids[3]}', raiderData.score.last5Raids[3])
+            .replace('${raiderData.score.last5Raids[4]}', raiderData.score.last5Raids[4])
             .replace('${userId}', userId);;
 
         return finalMarkup;
